@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.countrydiscover.data.CountryDetailData
 
 @Composable
 fun SetupGraph(
@@ -22,11 +23,13 @@ fun SetupGraph(
         }
         composable(
             route = Screen.CountryDetail.route,
-            arguments = listOf(navArgument("name") {
-                type = NavType.StringType
+            arguments = listOf(navArgument("id") {
+                type = NavType.IntType
             })
         ) {
-            CountryDetail(navController = navController, it.arguments?.getString("name").toString().replace("{name}", ""))
+            CountryDetail(navController = navController, countryData = CountryDetailData(
+                id = it.arguments?.getInt("id") ?: 0
+            ))
         }
     }
 

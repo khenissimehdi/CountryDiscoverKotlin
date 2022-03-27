@@ -45,7 +45,7 @@ fun Home(navController: NavController) {
                 )
             }
             items(cats) { country ->
-                CatListItem(country = country, navController = navController)
+                CountryListItem(country = country, navController = navController)
             }
         }
 
@@ -53,14 +53,14 @@ fun Home(navController: NavController) {
 }
 
 @Composable
-fun CatListItem(country: Country, navController: NavController) {
+fun CountryListItem(country: Country, navController: NavController) {
     Row(horizontalArrangement = Arrangement.spacedBy(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxSize()
             .padding(8.dp)
             .clickable {
-                navController.navigate(route = Screen.CountryDetail.route + country.name)
+                navController.navigate(route = "country_screen/" + country.id)
             }
     ) {
         Image(
